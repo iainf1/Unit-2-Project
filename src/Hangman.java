@@ -7,15 +7,16 @@ public class Hangman {
             hangmanWordBlanks += "_";
         }
     }
-public letterBlanks() {
-        String blankLetter = "";
-for (int i = 0; i < hangmanWord.length(); i++) {
-   hangmanWord.charAt(i) =
-  }
-}
+//public letterBlanks() {
+//for (int i = 0; i < hangmanWord.length(); i++) {
+//    char blankLetter = new char;
+//   blankLetter = hangmanWord.charAt(i);
+//  }
+//}
 
     public String lettersFound (String guess) {
         String foundLetters = "";
+        int lives = 6;
         for (int i = 0; i < hangmanWord.length(); i++) {
             if (hangmanWord.charAt(i) == guess.charAt(0)) {
                 foundLetters += guess.charAt(0);
@@ -26,6 +27,11 @@ for (int i = 0; i < hangmanWord.length(); i++) {
                     System.out.println("Already guessed this letter");
                 }
                 else {
+                    lives = lives-1;
+                    if (lives = 5) {
+                        System.out.println("")
+                    }
+
                     //subtract lives
                 }
             }
