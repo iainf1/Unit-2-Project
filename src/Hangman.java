@@ -28,7 +28,7 @@ public class Hangman {
                 }
                 else {
                     lives = lives-1;
-                    if (lives = 5) {
+                    if (lives == 5) {
                         System.out.println("")
                     }
 
@@ -39,4 +39,5 @@ public class Hangman {
         return foundLetters;
     }
 }
+
 
