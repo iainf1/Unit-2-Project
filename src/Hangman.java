@@ -1,32 +1,44 @@
 public class Hangman {
     private String hangmanWord;
+    private String foundLetters;
+    private int lives = 6;
 
     public Hangman(String word) {
         hangmanWord = word;
-        String hangmanWordBlanks = "";
-        for (int i = 0; i < hangmanWord.length(); i++) {
-            hangmanWordBlanks += "_";
+        String foundLetters = "";
+        for (int i = 0; i < word.length(); i++) {
+            foundLetters += "_";
         }
     }
-//public letterBlanks() {
-//for (int i = 0; i < hangmanWord.length(); i++) {
-//    char blankLetter = new char;
-//   blankLetter = hangmanWord.charAt(i);
-//  }
-//}
 
     public String lettersFound(String guess) {
-        String foundLetters = "";
-        int lives = 6;
+        char guessChar = guess.charAt(0);
+        boolean found = false;
+
+        if (foundLetters.indexOf(guessChar) >= 0)
+        {
+            System.out.println("Already guessed this letter");
+            return foundLetters;
+        }
+
+        String newFoundLetters = "";
         for (int i = 0; i < hangmanWord.length(); i++) {
             if (hangmanWord.charAt(i) == guess.charAt(0)) {
                 foundLetters += guess.charAt(0);
-
+                found = true;
             } else {
-                if (foundLetters.indexOf(guess.charAt(0)) >= 0) {
-                    System.out.println("Already guessed this letter");
-                } else {
-                    lives = lives - 1;
+                newFoundLetters += foundLetters.charAt(i);
+            }
+        }
+        foundLetters = newFoundLetters;
+
+        if (!found) {
+            lives--;;
+        }
+        return foundLetters;
+    }
+
+    private void displayHangman(int lives) {
                     if (lives == 5) {
                         System.out.println("____");
                         System.out.println("|  |");
@@ -85,8 +97,3 @@ public class Hangman {
                     }
                 }
             }
-        }
-        return foundLetters;
-    }
-}
-
