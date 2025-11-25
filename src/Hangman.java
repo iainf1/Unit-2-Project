@@ -24,7 +24,7 @@ public class Hangman {
         String newFoundLetters = "";
         for (int i = 0; i < hangmanWord.length(); i++) {
             if (hangmanWord.charAt(i) == guess.charAt(0)) {
-                foundLetters += guess.charAt(0);
+                newFoundLetters += guessChar;
                 found = true;
             } else {
                 newFoundLetters += foundLetters.charAt(i);
