@@ -5,18 +5,26 @@ public class Hangman {
 
     public Hangman(String word) {
         hangmanWord = word;
-        String foundLetters = "";
+        foundLetters = "";
         for (int i = 0; i < word.length(); i++) {
             foundLetters += "_";
         }
     }
 
+    public int getLives() {
+        return lives;
+    }
+
+    public String getFoundLetters() {
+        return foundLetters;
+    }
+
+
     public String lettersFound(String guess) {
         char guessChar = guess.charAt(0);
         boolean found = false;
 
-        if (foundLetters.indexOf(guessChar) >= 0)
-        {
+        if (foundLetters.indexOf(guessChar) >= 0) {
             System.out.println("Already guessed this letter");
             return foundLetters;
         }
@@ -33,13 +41,22 @@ public class Hangman {
         foundLetters = newFoundLetters;
 
         if (!found) {
-            lives--;;
+            lives--;
         }
         return foundLetters;
     }
 
-    private void displayHangman(int lives) {
-                    if (lives == 5) {
+    public void displayHangman(int lives) {
+        if (lives == 6) {
+            System.out.println("____");
+            System.out.println("|  |");
+            System.out.println("|");
+            System.out.println("|");
+            System.out.println("|");
+            System.out.println("|");
+            System.out.println("-");
+        }
+                    else if (lives == 5) {
                         System.out.println("____");
                         System.out.println("|  |");
                         System.out.println("|  O");
@@ -47,9 +64,8 @@ public class Hangman {
                         System.out.println("|");
                         System.out.println("|");
                         System.out.println("-");
-
                     }
-                    if (lives == 4) {
+                    else if (lives == 4) {
                         System.out.println("____");
                         System.out.println("|  |");
                         System.out.println("|  O");
@@ -59,7 +75,7 @@ public class Hangman {
                         System.out.println("-");
                     }
 
-                    if (lives == 3) {
+                    else if (lives == 3) {
                         System.out.println("____");
                         System.out.println("|  |");
                         System.out.println("|  O");
@@ -68,7 +84,7 @@ public class Hangman {
                         System.out.println("| /");
                         System.out.println("-");
                     }
-                    if (lives == 2) {
+                    else if (lives == 2) {
                         System.out.println("____");
                         System.out.println("|  |");
                         System.out.println("|  O");
@@ -77,20 +93,11 @@ public class Hangman {
                         System.out.println("| / \\");
                         System.out.println("-");
                     }
-                    if (lives == 1) {
+                    else if (lives == 1) {
                         System.out.println("____");
                         System.out.println("|  |");
                         System.out.println("|  O");
                         System.out.println("| /|");
-                        System.out.println("|  |");
-                        System.out.println("| / \\");
-                        System.out.println("-");
-                    }
-                    if (lives == 0) {
-                        System.out.println("____");
-                        System.out.println("|  |");
-                        System.out.println("|  O");
-                        System.out.println("| /|\\");
                         System.out.println("|  |");
                         System.out.println("| / \\");
                         System.out.println("-");
